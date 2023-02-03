@@ -11,7 +11,7 @@ jobs:
 
   az-login-test-non-oidc:
     runs-on: ubuntu-latest
-#     continue-on-error: true
+continue-on-error: true
     steps:
       - name: 'Az CLI login with subscription'
         uses: azure/login@v1
@@ -20,7 +20,7 @@ jobs:
           
       - run: |
           az account show
-#          az webapp list
+          az webapp list
           
       - name: 'Az CLI login without subscription'
         uses: azure/login@v1
@@ -56,7 +56,7 @@ jobs:
 
   az-login-test-oidc:
     runs-on: ubuntu-latest
-#     continue-on-error: true
+     continue-on-error: true
     steps:
       - name: 'Az CLI login with subscription'
         uses: azure/login@v1
@@ -67,7 +67,7 @@ jobs:
         
       - run: |
           az account show
-#          az webapp list
+          az webapp list
           
       - name: 'Az CLI login without subscription'
         uses: azure/login@v1
