@@ -18,6 +18,8 @@ jobs:
 
     - name: Deploy ARM Template
       uses: azure/cli@v1
+    - name: Azure Login
+      uses: Azure/login@v1
       with:
         azcliversion: 2.44.0
         inlinescript: |
