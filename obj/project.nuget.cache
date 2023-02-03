@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oKz7FsSwezAg9kfFYEnecgP0WW8i6uw0bBPT93K5L8Ry2W64ShMBn1QHaPER/eKCDyg9oifZzymK4+VsY/cOAw==",
+  "dgSpecHash": "Ow9AQBxFnfkNV4ujpPexAQiclppUOmG118mYLvjDWI/Cdk8UoPOw9gXvDUE+9U1fn2OZdWzabiBg4bKuN4Bs9Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\admin\\source\\repos\\TestAssignment\\TestAssignment.csproj",
+  "projectFilePath": "C:\\GIT\\Test3\\Simple.NetCoreHelloWorldWebApp\\TestAssignment.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.0\\microsoft.visualstudio.azure.containers.tools.targets.1.17.0.nupkg.sha512"
   ],
