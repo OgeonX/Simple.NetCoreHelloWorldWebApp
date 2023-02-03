@@ -3,6 +3,10 @@
 on: [push]
 
 name: AzureARMDeploy
+defaults:
+  run:
+    shell: bash
+    working-directory: scripts
 
 jobs:
 
