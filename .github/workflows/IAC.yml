@@ -1,3 +1,13 @@
+name: Deploy ARM Template
+
+on:
+  push:
+    branches:
+      - '*'
+
+env:
+  AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -11,7 +21,6 @@ jobs:
       with:
         azcliversion: 2.22.0
         command: |
-          # Deployment logic here
           echo ${AZURE_CREDENTIALS} | base64 --decode > ${HOME}/credentials.json
           az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_PASSWORD }} --tenant ${{ secrets.AZURE_TENANT_ID }}
           az deployment group create --name my-arm-deployment --resource-group my-resource-group --template-file template.json --parameters "{\"branch_name\": {\"value\": \"${{ github.ref }}\"}}"
