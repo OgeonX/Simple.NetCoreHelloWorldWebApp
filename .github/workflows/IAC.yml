@@ -19,7 +19,7 @@ jobs:
     - name: Deploy ARM Template
       uses: azure/cli@v2
       with:
-        azcliversion: 2.22.0
+        azcliversion: 2.44.0
         command: |
           echo ${AZURE_CREDENTIALS} | base64 --decode > ${HOME}/credentials.json
           az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_PASSWORD }} --tenant ${{ secrets.AZURE_TENANT_ID }}
