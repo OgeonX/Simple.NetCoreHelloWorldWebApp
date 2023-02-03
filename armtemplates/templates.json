@@ -1,0 +1,21 @@
+# Create the resource group
+New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+# Set the parameters for the deployment
+$appName = "HelloWorldApp"
+$appServicePlanName = "HelloWorldAppServicePlan"
+$skuName = "B1"
+$skuCapacity = 1
+$repoUrl = "https://github.com/Azure-Samples/aspnet-hello-world-sample.git"
+
+$parameters = @{
+    "appName" = $appName;
+    "appServicePlanName" = $appServicePlanName;
+    "skuName" = $skuName;
+    "skuCapacity" = $skuCapacity;
+    "repoUrl" = $repoUrl;
+}
+
+# Deploy the ARM template and pass in the parameters
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile .\template.json -TemplateParameterObject $parameters
+This will create a resource group with the specified name and location, then deploy the ARM template using the parameters that were set. You can modify the parameters to suit your specific deployment requirements.
