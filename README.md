@@ -1,0 +1,2 @@
+# Simple.NetCoreHelloWorldWebApp
+Test Assigment
