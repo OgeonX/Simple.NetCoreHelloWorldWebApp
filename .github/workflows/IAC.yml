@@ -1,16 +1,29 @@
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
 on: [push]
 
-name: AzureLoginSample
+name: AzureARMDeploy
 
 jobs:
 
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: azure/login@v1
+
+    - name: Login to Azure
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-        environment: 'Production'
 
-    - run: |
-        az webapp list --query "[?state=='Running']"
+    - name: Checkout source code
+      uses: actions/checkout@v2
+
+    - name: Deploy ARM Template
+      uses: azure/CLI@v1
+      with:
+        inlineScript: |
+          az deployment group create \
+            --name StorageAccountDeployment \
+            --resource-group savdevgithubdeploy \
+            --template-file armtemplates/storageaccount.json \
+            --parameters storageAccountType=Standard_GRS
