@@ -13,8 +13,14 @@
       - uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+      - name: Install Az.Resources PowerShell Module
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            Install-Module -Name Az.Resources -AllowClobber -Scope CurrentUser
          
-      - name: Deploy ARM Template
+      - name: Create ResourceGroup
         uses: azure/CLI@v1
         with:
           inlineScript: |
