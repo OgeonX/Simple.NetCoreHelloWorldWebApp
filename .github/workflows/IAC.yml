@@ -6,7 +6,7 @@ name: AzureARMDeploy
 defaults:
   run:
     shell: bash
-    working-directory: scripts
+    working-directory: $(Build.Repository.LocalPath)
 
 jobs:
 
