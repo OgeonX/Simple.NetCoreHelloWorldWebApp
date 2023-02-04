@@ -1,15 +1,14 @@
-on: [push]
-
 name: AzureARMDeploy
+on: push
+  
 defaults:
   run:
-    shell: bash
     working-directory: $(Build.Repository.LocalPath)
 
 jobs:
 
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
 
         # Log into Azure
