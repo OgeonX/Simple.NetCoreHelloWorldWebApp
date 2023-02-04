@@ -1,9 +1,5 @@
 name: AzureARMDeploy
 on: push
-  
-defaults:
-  run:
-    working-directory: $(Build.Repository.LocalPath)
 
 jobs:
 
@@ -21,6 +17,6 @@ jobs:
         uses: azure/CLI@v1
       - name: Checkout source code
         uses: actions/checkout@v2
-          with:
-        inlineScript: |
-          az deployment group create --name ResourceGroupDeployment --resource-group savdevgithubdeploy --template-file ${{ github.workflow }}/armtemplates/template.json --parameters storageAccountType=Standard_GRS
+        with:
+            inlineScript: |
+              az deployment group create --name ResourceGroupDeployment --resource-group savdevgithubdeploy --template-file ${{ github.workflow }}/armtemplates/template.json --parameters storageAccountType=Standard_GRS
