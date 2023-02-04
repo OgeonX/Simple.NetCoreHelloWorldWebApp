@@ -3,13 +3,6 @@ on: push
 jobs:
   build-and-deploy:
     runs-on: self-hosted
-    steps:
-    
-      # Checkout code
-    - uses: actions/checkout@main
-
-  check_connection:
-    runs-on: self-hosted
     
     steps:
       - name: Check Azure Connection
@@ -19,44 +12,4 @@ jobs:
             az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }}
             az account show
         
-    
-      # Log into Azure
-    - uses: azure/login@v1
-      with: 
-        enable-AzPSSession: true
-        creds: ${{ secrets.AZURE_CREDENTIALS }} 
-    - name: List installed modules
-       run: |
-       set -e
-        module list
-
-        
-    - name: Set PowerShell execution policy
-      uses: azure/CLI@v1
-      with:
-        inlineScript: |
-          Set-ExecutionPolicy Unrestricted
-        
-    - name: Install Az.Resources PowerShell Module
-      uses: azure/CLI@v1
-      with:
-        inlineScript: |
-          Install-Module -Name Az.Resources -AllowClobber -Scope CurrentUser
-       
-    - name: Create ResourceGroup
-      uses: azure/CLI@v1
-      with:
-        inlineScript: |
-          New-AzResourceGroup -Name ${{ secrets.AZURE_RG }} -Location "West Europe"
-
-      # Deploy ARM template
-    - name: Run ARM deploy
-      uses: azure/arm-deploy@v1
-      with:
-        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-        resourceGroupName: ${{ secrets.AZURE_RG }}
-        template: ./azuredeploy.json
-        parameters: storageAccountType=Standard_LRS
-
-      # output containerName variable from template
-    - run: echo ${{ steps.deploy.outputs.containerName }}
+  
