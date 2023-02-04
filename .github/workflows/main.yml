@@ -21,7 +21,7 @@
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            Install-Module -Name Az.Resources -AllowClobber -Scope CurrentUser
+            Get-Module -Name Az.Resources -AllowClobber -Scope CurrentUser
          
       - name: Create ResourceGroup
         uses: azure/CLI@v1
