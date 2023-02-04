@@ -2,11 +2,23 @@ name: Azure ARM
 on: push
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
     
       # Checkout code
     - uses: actions/checkout@main
+
+  check_connection:
+    runs-on: self-hosted
+    
+    steps:
+      - name: Check Azure Connection
+        uses: azure/cli@v1
+        with:
+          inlineScript: |
+            az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }}
+            az account show
+        
     
       # Log into Azure
     - uses: azure/login@v1
