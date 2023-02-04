@@ -20,7 +20,7 @@
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            New-AzResourceGroup -Name ${{ secrets.AZURE_RG }} -Location "West Europe"
+            call New-AzResourceGroup -Name ${{ secrets.AZURE_RG }} -Location "West Europe"
       - name: Set PowerShell execution policy
         uses: azure/CLI@v1
         with:
