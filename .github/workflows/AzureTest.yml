@@ -18,6 +18,10 @@ jobs:
         with:
           creds: '{AZURE_CREDENTIALS}'
           enable-AzPSSession: true
+      - name: List installed modules
+        run: |
+          set -e
+          module list
 
       - name: Azure PowerShell Action
         uses: Azure/powershell@v1
