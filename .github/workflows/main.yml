@@ -15,12 +15,7 @@
           enable-AzPSSession: true
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           azPSVersion: "7.5.0"
-          
-      - name: Set PowerShell execution policy
-        uses: azure/CLI@v1
-        with:
-          inlineScript: |
-            Set-ExecutionPolicy Unrestricted
+           
           
       - name: Install Az.Resources PowerShell Module
         uses: azure/CLI@v1
@@ -33,6 +28,11 @@
         with:
           inlineScript: |
             New-AzResourceGroup -Name ${{ secrets.AZURE_RG }} -Location "West Europe"
+      - name: Set PowerShell execution policy
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            Set-ExecutionPolicy Unrestricted
 
         # Deploy ARM template
       - name: Run ARM deploy
