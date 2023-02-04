@@ -14,6 +14,7 @@
         with:
           enable-AzPSSession: true
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+          azPSVersion: "7.5.0"
           
       - name: Set PowerShell execution policy
         uses: azure/CLI@v1
