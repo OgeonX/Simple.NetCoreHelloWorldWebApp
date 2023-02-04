@@ -13,6 +13,8 @@ jobs:
       with: 
         enable-AzPSSession: true
         creds: ${{ secrets.AZURE_CREDENTIALS }}
+        inlineScript: |
+          Set-ExecutionPolicy Unrestricted
         
     - name: Set PowerShell execution policy
       uses: azure/CLI@v1
