@@ -11,10 +11,12 @@ jobs:
       # Log into Azure
     - uses: azure/login@v1
       with: 
-        inlineScript: |
-          Set-ExecutionPolicy Unrestricted
         enable-AzPSSession: true
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        creds: ${{ secrets.AZURE_CREDENTIALS }} 
+    - name: List installed modules
+       run: |
+       set -e
+        module list
 
         
     - name: Set PowerShell execution policy
