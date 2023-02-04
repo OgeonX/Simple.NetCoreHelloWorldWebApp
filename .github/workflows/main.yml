@@ -15,13 +15,6 @@
           enable-AzPSSession: true
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           azPSVersion: "7.5.0"
-           
-          
-      - name: Install Az.Resources PowerShell Module
-        uses: azure/CLI@v1
-        with:
-          inlineScript: |
-            Get-Module -Name Az.Resources -AllowClobber -Scope CurrentUser
          
       - name: Create ResourceGroup
         uses: azure/CLI@v1
@@ -33,6 +26,12 @@
         with:
           inlineScript: |
             Set-ExecutionPolicy Unrestricted
+            
+      - name: Install Az.Resources PowerShell Module
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            Get-Module -Name Az.Resources -AllowClobber -Scope CurrentUser
 
         # Deploy ARM template
       - name: Run ARM deploy
