@@ -18,11 +18,10 @@ jobs:
           enable-AzPSSession: true
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           azPSVersion: "7.5.0"         
-
-    - name: Deploy ARM Template
-      uses: azure/CLI@v1
-    - name: Checkout source code
-      uses: actions/checkout@v2
-      with:
+      - name: Deploy ARM Template
+        uses: azure/CLI@v1
+      - name: Checkout source code
+        uses: actions/checkout@v2
+          with:
         inlineScript: |
           az deployment group create --name ResourceGroupDeployment --resource-group savdevgithubdeploy --template-file ${{ github.workflow }}/armtemplates/template.json --parameters storageAccountType=Standard_GRS
