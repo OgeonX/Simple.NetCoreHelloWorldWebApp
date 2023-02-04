@@ -13,6 +13,12 @@
       - uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+         
+      - name: Deploy ARM Template
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            New-AzResourceGroup -Name ${{ secrets.AZURE_RG }} -Location "West Europe"
 
         # Deploy ARM template
       - name: Run ARM deploy
