@@ -14,7 +14,6 @@
         with:
           enable-AzPSSession: true
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-          azPSVersion: "7.5.0"
          
       - name: Create ResourceGroup
         uses: azure/CLI@v1
