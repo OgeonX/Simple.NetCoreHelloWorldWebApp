@@ -1,0 +1,28 @@
+on: [push]
+
+name: AzureARMDeploy
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os:
+          - ubuntu-22.04
+          - ubuntu-20.04
+          - windows-2019
+          - windows-2022
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: '{AZURE_CREDENTIALS}'
+          enable-AzPSSession: true
+
+      - name: Azure PowerShell Action
+        uses: Azure/powershell@v1
+        with:
+          inlineScript: |
+            get-azcontext
+            Get-AzResourceGroup
+          azPSVersion: "latest"
