@@ -16,7 +16,8 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           
       - name: Show Azure account information
-        uses: azure/cli@v2
+        uses: azure/cli@v1
         with:
+         azcliversion: 2.29.2
          inlineScript: call |
              az account show
