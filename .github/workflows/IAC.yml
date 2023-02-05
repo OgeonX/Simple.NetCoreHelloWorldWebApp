@@ -19,5 +19,5 @@ jobs:
         uses: azure/cli@v1
         with:
          azcliversion: 2.29.2
-         inlineScript: call |
+         inlineScript: |
              az account show
